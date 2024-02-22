@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract RentalSmartContract {
+    address public landlord;
+    address public tenant;
+    uint256 public securityDeposit;
+    uint256 public remainingDeposit;
+    bool public propertyInspected;
+    bool public satisfied;
+
+    event DepositReceived(address indexed sender, uint256 amount);
+    event PropertyInspected(bool isSatisfactory);
+    event DepositReleased(address indexed recipient, uint256 amount);
+
+    modifier onlyLandlord() {
+        require(msg.sender == landlord, "Only the landlord can call this function");
+        _;
+    }
+
+    modifier onlyTenant() {
+        require(msg.sender == tenant, "Only the tenant can call this function");
+        _;
+    }
+
+    constructor(address _tenant, uint256 _securityDeposit) {
+        landlord = msg.sender;
+        tenant = _tenant;
+        securityDeposit = _securityDeposit;
+        remainingDeposit = _securityDeposit;
+        propertyInspected = false;
+        satisfied = false;
+    }
+
+    function signRentalAgreement() external onlyTenant {
+        // This function assumes that the tenant agrees to the terms and conditions by deploying the contract.
+    }
+
+    function sendSecurityDeposit() external onlyTenant payable {
+        require(msg.value == securityDeposit, "Incorrect security deposit amount sent");
+        emit DepositReceived(msg.sender, msg.value);
+    }
+
+    function provideAccessToProperty() external onlyLandlord {
+        // Additional checks and conditions can be added here, e.g., verifying move-in date and property condition.
+        propertyInspected = false;
+    }
+
+    function inspectProperty(bool _satisfactory) external onlyTenant {
+        require(propertyInspected == false, "Property already inspected");
+        satisfied = _satisfactory;
+        propertyInspected = true;
+        emit PropertyInspected(_satisfactory);
+    }
+
+    function releaseSecurityDeposit() external onlyLandlord {
+        require(propertyInspected == true, "Property inspection must be completed");
+        require(satisfied == true, "Tenant must be satisfied with the property condition");
+
+        uint256 landlordShare = securityDeposit * 3 / 2;
+        uint256 tenantShare = securityDeposit / 2;
+
+        remainingDeposit -= tenantShare;
+        payable(landlord).transfer(landlordShare);
+
+        emit DepositReleased(landlord, landlordShare);
+    }
+}

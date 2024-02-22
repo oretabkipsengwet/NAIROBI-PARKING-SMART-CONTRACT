@@ -1,0 +1,262 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "payer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "ParkingPayment",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "payer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "PenaltyPayment",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "VehicleClamped",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "impoundYard",
+						"type": "string"
+					}
+				],
+				"name": "VehicleImpounded",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "impoundYard",
+						"type": "string"
+					}
+				],
+				"name": "impoundVehicle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nairobiCounty",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "parkingBalances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "payForOnStreetParking",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "payPenalty",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "vehicleLicense",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "parkingZone",
+						"type": "string"
+					}
+				],
+				"name": "requestVehicleClamp",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contract-c085f3f6c9.sol": "NairobiParkingSmartContract"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contract-c085f3f6c9.sol": {
+			"keccak256": "0x253e8549100361a0f4edcf795aea7a3652bad01cdba2d410f98c64596b2eeb9a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://31096d0033aa19070887765ac1d0ecdc9e3698348e52246cb38880c57a3e5e1b",
+				"dweb:/ipfs/QmQrhmDQ3bZs76JKtYT2kZPw64YQWBLKqgLKhnk65buRqK"
+			]
+		}
+	},
+	"version": 1
+}
